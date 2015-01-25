@@ -51,7 +51,7 @@
 	safecrlf = warn
 	# prevent crlf (then you will have to deal with the problem -- dos2unix, etc)
 	#safecrlf = true
-	editor = vim
+	editor = nano
 	#editor = subl -w
 
 [alias]
@@ -153,6 +153,7 @@
 	sno = show --name-only
 	logsimple = log --graph --abbrev-commit --pretty=oneline --all --decorate
 
+	update-from = "!f() { git fetch $1 --prune; git merge --ff-only $1/$2 || git rebase $1/$2; }; f"
 [apply]
 	whitespace = nowarn
 
@@ -170,14 +171,15 @@
 [mergetool]
 	prompt = false
 	keepBackup = false
-[difftool "diffmerge"]
-	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
-[mergetool "diffmerge"]
-	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 
 [merge]
-	tool = diffmerge
+	tool = sourcetree
 	# Always show a diffstat at the end of a merge
 	stat = true
 
@@ -192,7 +194,7 @@
 [filter "tabspace"]
 	clean = expand -t 4
 [push]
-	default = matching
+	default = simple
 [filter "media"]
 	required = true
 	clean = git media clean %f
