@@ -57,6 +57,11 @@ fi
 
 bot "installing homebrew command-line tools"
 
+# Tap extra repositories
+brew untap homebrew/dupes
+brew untap homebrew/versions
+brew tap homebrew/dupes
+brew tap homebrew/versions
 
 # Install GNU core utilities (those that come with OS X are outdated)
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
@@ -82,10 +87,10 @@ require_brew ack
 #require_brew beanstalkd
 # ln -sfv /usr/local/opt/beanstalk/*.plist ~/Library/LaunchAgents
 # launchctl load ~/Library/LaunchAgents/homebrew.mxcl.beanstalk.plist
-# require_brew boot2docker
 # dos2unix converts windows newlines to unix newlines
 require_brew dos2unix
-# require_brew fig
+require_brew boot2docker
+require_brew fig
 # fortune command--I source this as a better motd :)
 require_brew fortune
 require_brew gawk
@@ -113,12 +118,20 @@ require_brew homebrew/dupes/screen
 require_brew tig
 require_brew tree
 require_brew ttyrec
-# better, more recent vim
-require_brew vim --override-system-vi
 require_brew watch
 # Install wget with IRI support
-require_brew wget --enable-iri
-require_brew composer
+require_brew wget --with-iri
+#require_brew composer
+
+###############################################################################
+# Fonts (via brew cask)                                                       #
+###############################################################################
+bot "installing fonts via homebrew casks..."
+brew tap caskroom/fonts > /dev/null 2>&1
+
+brew cask install font-droid-sans-mono-for-powerline
+brew cask install font-inconsolata-for-powerline
+brew cask install font-source-code-pro-for-powerline
 
 ###############################################################################
 # Native Apps (via brew cask)                                                 #
@@ -177,6 +190,7 @@ brew cleanup > /dev/null 2>&1
 bot "All clean"
 
 bot "Installing antigen..."
+mkdir -p $HOME/.antigen
 curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > $HOME/.antigen/antigen.zsh
 source $HOME/.antigen/antigen.zsh
 

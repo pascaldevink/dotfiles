@@ -16,7 +16,7 @@ antigen bundle robbyrussell/oh-my-zsh plugins/brew
 antigen bundle robbyrussell/oh-my-zsh plugins/docker
 antigen bundle robbyrussell/oh-my-zsh plugins/phing
 antigen bundle robbyrussell/oh-my-zsh plugins/compleat
-antigen bundle robbyrussell/oh-my-zsh plugins/dirpersists
+antigen bundle robbyrussell/oh-my-zsh plugins/dirpersist
 antigen bundle robbyrussell/oh-my-zsh plugins/ssh-agent
 
 antigen-bundle zsh-users/zsh-syntax-highlighting
