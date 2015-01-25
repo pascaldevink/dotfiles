@@ -107,12 +107,7 @@ require_brew imagemagick
 require_brew imagesnap
 # jq is a JSON grep
 require_brew jq
-# http://maven.apache.org/
-require_brew maven
-require_brew memcached
-require_brew nmap
 require_brew node
-require_brew redis
 # better/more recent version of screen
 require_brew homebrew/dupes/screen
 require_brew tig
@@ -124,11 +119,6 @@ require_brew watch
 # Install wget with IRI support
 require_brew wget --enable-iri
 
-bot "if you would like to start memcached at login, run this:"
-echo "ln -sfv /usr/local/opt/memcached/*.plist ~/Library/LaunchAgents"
-bot "if you would like to start memcached now, run this:"
-echo "launchctl load ~/Library/LaunchAgents/homebrew.mxcl.memcached.plist"
-
 ###############################################################################
 # Native Apps (via brew cask)                                                 #
 ###############################################################################
@@ -137,9 +127,9 @@ brew tap caskroom/versions > /dev/null 2>&1
 
 # cloud storage
 #require_cask amazon-cloud-drive
-require_cask box-sync
-#require_cask dropbox
-#require_cask evernote
+# require_cask box-sync
+require_cask dropbox
+require_cask evernote
 #require_cask skydrive
 
 # communication
@@ -148,35 +138,35 @@ require_cask slack
 
 # tools
 #require_cask comicbooklover
-require_cask diffmerge
+# require_cask diffmerge
 #require_cask flash-player
-require_cask github
+# require_cask github
 require_cask gpgtools
-require_cask ireadfast
+# require_cask ireadfast
 require_cask iterm2
-require_cask lastpass-universal
+# require_cask lastpass-universal
 #require_cask macvim
 require_cask sizeup
 #require_cask simple-comic
 #require_cask sketchup
-require_cask sublime-text
+# require_cask sublime-text
 require_cask the-unarchiver
 #require_cask transmission
 require_cask vlc
-require_cask xquartz
+# require_cask xquartz
 
 # development browsers
-require_cask breach
+# require_cask breach
 require_cask firefox
 #require_cask firefox-aurora
 require_cask google-chrome
-require_cask google-chrome-canary
-require_cask torbrowser
+# require_cask google-chrome-canary
+# require_cask torbrowser
 
 # virtal machines
 require_cask virtualbox
 # chef-dk, berkshelf, etc
-require_cask chefdk
+# require_cask chefdk
 # vagrant for running dev environments using docker images
 require_cask vagrant # # | grep Caskroom | sed "s/.*'\(.*\)'.*/open \1\/Vagrant.pkg/g" | sh
 
@@ -266,54 +256,54 @@ sudo chflags uchg /Private/var/vm/sleepimage;ok
 #running "Add a spacer to the right side of the Dock (where the Trash is)"
 #defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}';ok
 
-running "Set a custom wallpaper image"
+# running "Set a custom wallpaper image"
 # `DefaultDesktop.jpg` is already a symlink, and
 # all wallpapers are in `/Library/Desktop Pictures/`. The default is `Wave.jpg`.
-rm -rf ~/Library/Application Support/Dock/desktoppicture.db
-sudo rm -rf /System/Library/CoreServices/DefaultDesktop.jpg
-sudo ln -s ~/.dotfiles/img/wallpaper.jpg /System/Library/CoreServices/DefaultDesktop.jpg;ok
+# rm -rf ~/Library/Application Support/Dock/desktoppicture.db
+# sudo rm -rf /System/Library/CoreServices/DefaultDesktop.jpg
+# sudo ln -s ~/.dotfiles/img/wallpaper.jpg /System/Library/CoreServices/DefaultDesktop.jpg;ok
 
 
 ################################################
 bot "Standard System Changes"
 ################################################
-running "always boot in verbose mode (not OSX GUI mode)"
-sudo nvram boot-args="-v";ok
+# running "always boot in verbose mode (not OSX GUI mode)"
+# sudo nvram boot-args="-v";ok
 
 running "allow 'locate' command"
 sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist > /dev/null 2>&1;ok
 
-running "Set standby delay to 24 hours (default is 1 hour)"
-sudo pmset -a standbydelay 86400;ok
+# running "Set standby delay to 24 hours (default is 1 hour)"
+# sudo pmset -a standbydelay 86400;ok
 
 running "Disable the sound effects on boot"
 sudo nvram SystemAudioVolume=" ";ok
 
-running "Menu bar: disable transparency"
-defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false;ok
+# running "Menu bar: disable transparency"
+# defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false;ok
 
-running "Menu bar: hide the Time Machine, Volume, User, and Bluetooth icons"
-for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
-	defaults write "${domain}" dontAutoLoad -array \
-		"/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
-		"/System/Library/CoreServices/Menu Extras/Volume.menu" \
-		"/System/Library/CoreServices/Menu Extras/User.menu"
-done;
-defaults write com.apple.systemuiserver menuExtras -array \
-	"/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
-	"/System/Library/CoreServices/Menu Extras/AirPort.menu" \
-	"/System/Library/CoreServices/Menu Extras/Battery.menu" \
-	"/System/Library/CoreServices/Menu Extras/Clock.menu"
-ok
+# running "Menu bar: hide the Time Machine, Volume, User, and Bluetooth icons"
+# for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
+# 	defaults write "${domain}" dontAutoLoad -array \
+# 		"/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
+# 		"/System/Library/CoreServices/Menu Extras/Volume.menu" \
+# 		"/System/Library/CoreServices/Menu Extras/User.menu"
+# done;
+# defaults write com.apple.systemuiserver menuExtras -array \
+# 	"/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
+# 	"/System/Library/CoreServices/Menu Extras/AirPort.menu" \
+# 	"/System/Library/CoreServices/Menu Extras/Battery.menu" \
+# 	"/System/Library/CoreServices/Menu Extras/Clock.menu"
+# ok
 
-running "Set highlight color to green"
-defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600";ok
+# running "Set highlight color to green"
+# defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600";ok
 
-running "Set sidebar icon size to medium"
-defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2;ok
+# running "Set sidebar icon size to medium"
+# defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2;ok
 
-running "Always show scrollbars"
-defaults write NSGlobalDomain AppleShowScrollBars -string "Always";ok
+# running "Always show scrollbars"
+# defaults write NSGlobalDomain AppleShowScrollBars -string "Always";ok
 # Possible values: `WhenScrolling`, `Automatic` and `Always`
 
 running "Increase window resize speed for Cocoa applications"
@@ -333,8 +323,8 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false;ok
 running "Automatically quit printer app once the print jobs complete"
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true;ok
 
-running "Disable the “Are you sure you want to open this application?” dialog"
-defaults write com.apple.LaunchServices LSQuarantine -bool false;ok
+# running "Disable the “Are you sure you want to open this application?” dialog"
+# defaults write com.apple.LaunchServices LSQuarantine -bool false;ok
 
 running "Remove duplicates in the “Open With” menu (also see 'lscleanup' alias)"
 /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;ok
@@ -343,11 +333,11 @@ running "Display ASCII control characters using caret notation in standard text 
 # Try e.g. `cd /tmp; unidecode "\x{0000}" > cc.txt; open -e cc.txt`
 defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true;ok
 
-running "Disable automatic termination of inactive apps"
-defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true;ok
+# running "Disable automatic termination of inactive apps"
+# defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true;ok
 
-running "Disable the crash reporter"
-defaults write com.apple.CrashReporter DialogType -string "none";ok
+# running "Disable the crash reporter"
+# defaults write com.apple.CrashReporter DialogType -string "none";ok
 
 running "Set Help Viewer windows to non-floating mode"
 defaults write com.apple.helpviewer DevMode -bool true;ok
@@ -358,20 +348,20 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo Hos
 running "Restart automatically if the computer freezes"
 sudo systemsetup -setrestartfreeze on;ok
 
-running "Never go into computer sleep mode"
-sudo systemsetup -setcomputersleep Off > /dev/null;ok
+# running "Never go into computer sleep mode"
+# sudo systemsetup -setcomputersleep Off > /dev/null;ok
 
 running "Check for software updates daily, not just once per week"
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1;ok
 
-running "Disable Notification Center and remove the menu bar icon"
-launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist > /dev/null 2>&1;ok
+# running "Disable Notification Center and remove the menu bar icon"
+# launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist > /dev/null 2>&1;ok
 
-running "Disable smart quotes as they’re annoying when typing code"
-defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false;ok
+# running "Disable smart quotes as they’re annoying when typing code"
+# defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false;ok
 
-running "Disable smart dashes as they’re annoying when typing code"
-defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false;ok
+# running "Disable smart dashes as they’re annoying when typing code"
+# defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false;ok
 
 
 ###############################################################################
@@ -383,14 +373,14 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1;ok
 
-running "Trackpad: map bottom right corner to right-click"
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
-defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
-defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true;ok
+# running "Trackpad: map bottom right corner to right-click"
+# defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
+# defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
+# defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
+# defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true;ok
 
-running "Disable “natural” (Lion-style) scrolling"
-defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false;ok
+# running "Disable “natural” (Lion-style) scrolling"
+# defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false;ok
 
 running "Increase sound quality for Bluetooth headphones/headsets"
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40;ok
@@ -404,20 +394,20 @@ defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144;o
 running "Follow the keyboard focus while zoomed in"
 defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true;ok
 
-running "Disable press-and-hold for keys in favor of key repeat"
-defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false;ok
+# running "Disable press-and-hold for keys in favor of key repeat"
+# defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false;ok
 
 running "Set a blazingly fast keyboard repeat rate"
 defaults write NSGlobalDomain KeyRepeat -int 0;
 
-running "Set language and text formats (english/US)"
-defaults write NSGlobalDomain AppleLanguages -array "en"
-defaults write NSGlobalDomain AppleLocale -string "en_US@currency=USD"
-defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
-defaults write NSGlobalDomain AppleMetricUnits -bool true;ok
+# running "Set language and text formats (english/US)"
+# defaults write NSGlobalDomain AppleLanguages -array "en"
+# defaults write NSGlobalDomain AppleLocale -string "en_US@currency=USD"
+# defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
+# defaults write NSGlobalDomain AppleMetricUnits -bool true;ok
 
-running "Disable auto-correct"
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false;ok
+# running "Disable auto-correct"
+# defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false;ok
 
 ###############################################################################
 bot "Configuring the Screen"
@@ -446,8 +436,8 @@ sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutio
 bot "Finder Configs"
 ###############################################################################
 
-running "Allow quitting via ⌘ + Q; doing so will also hide desktop icons"
-defaults write com.apple.finder QuitMenuItem -bool true;ok
+# running "Allow quitting via ⌘ + Q; doing so will also hide desktop icons"
+# defaults write com.apple.finder QuitMenuItem -bool true;ok
 
 running "Disable window animations and Get Info animations"
 defaults write com.apple.finder DisableAllAnimations -bool true;ok
@@ -457,11 +447,11 @@ running "Set Desktop as the default location for new Finder windows"
 defaults write com.apple.finder NewWindowTarget -string "PfDe"
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop/";ok
 
-running "Show hidden files by default"
-defaults write com.apple.finder AppleShowAllFiles -bool true;ok
+# running "Show hidden files by default"
+# defaults write com.apple.finder AppleShowAllFiles -bool true;ok
 
-running "Show all filename extensions"
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true;ok
+# running "Show all filename extensions"
+# defaults write NSGlobalDomain AppleShowAllExtensions -bool true;ok
 
 running "Show status bar"
 defaults write com.apple.finder ShowStatusBar -bool true;ok
@@ -475,8 +465,8 @@ defaults write com.apple.finder QLEnableTextSelection -bool true;ok
 running "Display full POSIX path as Finder window title"
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true;ok
 
-running "When performing a search, search the current folder by default"
-defaults write com.apple.finder FXDefaultSearchScope -string "SCcf";ok
+# running "When performing a search, search the current folder by default"
+# defaults write com.apple.finder FXDefaultSearchScope -string "SCcf";ok
 
 running "Disable the warning when changing a file extension"
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false;ok
@@ -545,8 +535,8 @@ defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
 running "Show indicator lights for open applications in the Dock"
 defaults write com.apple.dock show-process-indicators -bool true;ok
 
-running "Don’t animate opening applications from the Dock"
-defaults write com.apple.dock launchanim -bool false;ok
+# running "Don’t animate opening applications from the Dock"
+# defaults write com.apple.dock launchanim -bool false;ok
 
 running "Speed up Mission Control animations"
 defaults write com.apple.dock expose-animation-duration -float 0.1;ok
@@ -566,8 +556,8 @@ defaults write com.apple.dock mru-spaces -bool false;ok
 
 running "Remove the auto-hiding Dock delay"
 defaults write com.apple.dock autohide-delay -float 0;ok
-running "Remove the animation when hiding/showing the Dock"
-defaults write com.apple.dock autohide-time-modifier -float 0;ok
+# running "Remove the animation when hiding/showing the Dock"
+# defaults write com.apple.dock autohide-time-modifier -float 0;ok
 
 running "Automatically hide and show the Dock"
 defaults write com.apple.dock autohide -bool true;ok
@@ -575,8 +565,8 @@ defaults write com.apple.dock autohide -bool true;ok
 running "Make Dock icons of hidden applications translucent"
 defaults write com.apple.dock showhidden -bool true;ok
 
-running "Make Dock more transparent"
-defaults write com.apple.dock hide-mirror -bool true;ok
+# running "Make Dock more transparent"
+# defaults write com.apple.dock hide-mirror -bool true;ok
 
 running "Reset Launchpad, but keep the desktop wallpaper intact"
 find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete;ok
@@ -585,7 +575,7 @@ running "Add iOS Simulator to Launchpad"
 sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone Simulator.app" "/Applications/iOS Simulator.app";ok
 
 
-bot "Configuring Hot Corners"
+# bot "Configuring Hot Corners"
 # Possible values:
 #  0: no-op
 #  2: Mission Control
@@ -598,15 +588,15 @@ bot "Configuring Hot Corners"
 # 11: Launchpad
 # 12: Notification Center
 
-running "Top left screen corner → Mission Control"
-defaults write com.apple.dock wvous-tl-corner -int 2
-defaults write com.apple.dock wvous-tl-modifier -int 0;ok
-running "Top right screen corner → Desktop"
-defaults write com.apple.dock wvous-tr-corner -int 4
-defaults write com.apple.dock wvous-tr-modifier -int 0;ok
-running "Bottom right screen corner → Start screen saver"
-defaults write com.apple.dock wvous-br-corner -int 5
-defaults write com.apple.dock wvous-br-modifier -int 0;ok
+# running "Top left screen corner → Mission Control"
+# defaults write com.apple.dock wvous-tl-corner -int 2
+# defaults write com.apple.dock wvous-tl-modifier -int 0;ok
+# running "Top right screen corner → Desktop"
+# defaults write com.apple.dock wvous-tr-corner -int 4
+# defaults write com.apple.dock wvous-tr-modifier -int 0;ok
+# running "Bottom right screen corner → Start screen saver"
+# defaults write com.apple.dock wvous-br-corner -int 5
+# defaults write com.apple.dock wvous-br-modifier -int 0;ok
 
 ###############################################################################
 bot "Configuring Safari & WebKit"
@@ -733,21 +723,21 @@ fi;
 running "Installing the Solarized Dark theme for iTerm (opening file)"
 open "./configs/Solarized Dark.itermcolors";ok
 
-running "Don’t display the annoying prompt when quitting iTerm"
-defaults write com.googlecode.iterm2 PromptOnQuit -bool false;ok
-running "hide tab title bars"
-defaults write com.googlecode.iterm2 HideTab -bool true;ok
-running "set system-wide hotkey to show/hide iterm with ^\`"
-defaults write com.googlecode.iterm2 Hotkey -bool true;
-defaults write com.googlecode.iterm2 HotkeyChar -int 96;
-defaults write com.googlecode.iterm2 HotkeyCode -int 50;
-defaults write com.googlecode.iterm2 HotkeyModifiers -int 262401;
-ok
+# running "Don’t display the annoying prompt when quitting iTerm"
+# defaults write com.googlecode.iterm2 PromptOnQuit -bool false;ok
+# running "hide tab title bars"
+# defaults write com.googlecode.iterm2 HideTab -bool true;ok
+# running "set system-wide hotkey to show/hide iterm with ^\`"
+# defaults write com.googlecode.iterm2 Hotkey -bool true;
+# defaults write com.googlecode.iterm2 HotkeyChar -int 96;
+# defaults write com.googlecode.iterm2 HotkeyCode -int 50;
+# defaults write com.googlecode.iterm2 HotkeyModifiers -int 262401;
+# ok
 
-# running "Make iTerm2 load new tabs in the same directory"
-# defaults export com.googlecode.iterm2 /tmp/plist
-# /usr/libexec/PlistBuddy -c "set \"New Bookmarks\":0:\"Custom Directory\" Recycle" /tmp/plist
-# defaults import com.googlecode.iterm2 /tmp/plist;ok
+running "Make iTerm2 load new tabs in the same directory"
+defaults export com.googlecode.iterm2 /tmp/plist
+/usr/libexec/PlistBuddy -c "set \"New Bookmarks\":0:\"Custom Directory\" Recycle" /tmp/plist
+defaults import com.googlecode.iterm2 /tmp/plist;ok
 
 
 ###############################################################################
@@ -781,11 +771,11 @@ defaults write com.apple.ActivityMonitor SortDirection -int 0;ok
 bot "Address Book, Dashboard, iCal, TextEdit, and Disk Utility"
 ###############################################################################
 
-running "Enable the debug menu in Address Book"
-defaults write com.apple.addressbook ABShowDebugMenu -bool true;ok
+# running "Enable the debug menu in Address Book"
+# defaults write com.apple.addressbook ABShowDebugMenu -bool true;ok
 
-running "Enable Dashboard dev mode (allows keeping widgets on the desktop)"
-defaults write com.apple.dashboard devmode -bool true;ok
+# running "Enable Dashboard dev mode (allows keeping widgets on the desktop)"
+# defaults write com.apple.dashboard devmode -bool true;ok
 
 running "Use plain text mode for new TextEdit documents"
 defaults write com.apple.TextEdit RichText -int 0;ok
@@ -801,11 +791,11 @@ defaults write com.apple.DiskUtility advanced-image-options -bool true;ok
 bot "Mac App Store"
 ###############################################################################
 
-running "Enable the WebKit Developer Tools in the Mac App Store"
-defaults write com.apple.appstore WebKitDeveloperExtras -bool true;ok
+# running "Enable the WebKit Developer Tools in the Mac App Store"
+# defaults write com.apple.appstore WebKitDeveloperExtras -bool true;ok
 
-running "Enable Debug Menu in the Mac App Store"
-defaults write com.apple.appstore ShowDebugMenu -bool true;ok
+# running "Enable Debug Menu in the Mac App Store"
+# defaults write com.apple.appstore ShowDebugMenu -bool true;ok
 
 ###############################################################################
 bot "Messages"
@@ -814,11 +804,11 @@ bot "Messages"
 running "Disable automatic emoji substitution (i.e. use plain text smileys)"
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false;ok
 
-running "Disable smart quotes as it’s annoying for messages that contain code"
-defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false;ok
+# running "Disable smart quotes as it’s annoying for messages that contain code"
+# defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false;ok
 
-running "Disable continuous spell checking"
-defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false;ok
+# running "Disable continuous spell checking"
+# defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false;ok
 
 ###############################################################################
 bot "Google Chrome & Google Chrome Canary"
@@ -826,48 +816,30 @@ bot "Google Chrome & Google Chrome Canary"
 
 running "Allow installing user scripts via GitHub Gist or Userscripts.org"
 defaults write com.google.Chrome ExtensionInstallSources -array "https://gist.githubusercontent.com/" "http://userscripts.org/*"
-defaults write com.google.Chrome.canary ExtensionInstallSources -array "https://gist.githubusercontent.com/" "http://userscripts.org/*";ok
+# defaults write com.google.Chrome.canary ExtensionInstallSources -array "https://gist.githubusercontent.com/" "http://userscripts.org/*";ok
 
 ###############################################################################
-bot "SizeUp.app"
+# bot "SizeUp.app"
 ###############################################################################
 
-running "Start SizeUp at login"
-defaults write com.irradiatedsoftware.SizeUp StartAtLogin -bool true;ok
-
-running "Don’t show the preferences window on next start"
-defaults write com.irradiatedsoftware.SizeUp ShowPrefsOnNextStart -bool false;ok
+# running "Start SizeUp at login"
+# defaults write com.irradiatedsoftware.SizeUp StartAtLogin -bool true;ok
+# running "Don’t show the preferences window on next start"
+# defaults write com.irradiatedsoftware.SizeUp ShowPrefsOnNextStart -bool false;ok
 
 ###############################################################################
-bot "Sublime Text"
+# bot "Sublime Text"
 ###############################################################################
 
-running "Install Sublime Text settings"
-cp -r configs/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings 2> /dev/null;ok
+# running "Install Sublime Text settings"
+# cp -r configs/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings 2> /dev/null;ok
 
 ###############################################################################
 bot "NPM Globals..."
 ###############################################################################
 
-require_npm antic
 require_npm bower
-# http://ionicframework.com/
-require_npm cordova
-require_npm ionic
-# https://github.com/markdalgleish/bespoke.js
-require_npm generator-bespoke
 require_npm grunt
-require_npm gulp
-require_npm jshint
-# http://devo.ps/blog/goodbye-node-forever-hello-pm2/
-require_npm pm2
-require_npm prettyjson
-require_npm supervisor
-# https://github.com/sindresorhus/trash
-require_npm trash
-# https://github.com/MrRio/vtop
-require_npm vtop
-require_npm yo
 
 ###############################################################################
 bot "Ruby Gems..."
