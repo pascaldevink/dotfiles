@@ -129,9 +129,9 @@ require_brew wget --with-iri
 bot "installing fonts via homebrew casks..."
 brew tap caskroom/fonts > /dev/null 2>&1
 
-brew cask install font-droid-sans-mono-for-powerline
-brew cask install font-inconsolata-for-powerline
-brew cask install font-source-code-pro-for-powerline
+require_cask font-droid-sans-mono-for-powerline
+require_cask font-inconsolata-for-powerline
+require_cask font-source-code-pro-for-powerline
 
 ###############################################################################
 # Native Apps (via brew cask)                                                 #
@@ -859,6 +859,8 @@ bot "NPM Globals..."
 
 require_npm bower
 require_npm grunt
+require_npm gh
+require_npm gh-gif
 
 ###############################################################################
 bot "Ruby Gems..."
