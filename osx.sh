@@ -176,6 +176,10 @@ bot "Alright, cleaning up homebrew cache..."
 brew cleanup > /dev/null 2>&1
 bot "All clean"
 
+bot "Installing antigen..."
+curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > $HOME/.antigen/antigen.zsh
+source $HOME/.antigen/antigen.zsh
+
 ###############################################################################
 bot "Configuring General System UI/UX..."
 ###############################################################################
