@@ -50,6 +50,3 @@ alias fuck='sudo $(history -p \!\!)'
 
 # Customize to your needs...
 unsetopt correct
-
-# run fortune on new terminal :)
-fortune

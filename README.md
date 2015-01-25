@@ -38,6 +38,19 @@ cd ~/.dotfiles;
 
 > Note: running install.sh is idempotent. You can run it again and again as you add new features or software to the scripts! I'll regularly add new configurations so keep an eye on this repo as it grows and optimizes.
 
+## Afterwards
+
+### Fonts
+There are some things that are hard to automate, such as the installation of fonts and setting them in the Terminal.
+To fix this, [download](https://github.com/gabrielelana/awesome-terminal-fonts/tree/patching-strategy/patched) the .ttf fonts, open them and click Install. Afterwards, change your terminal to use one of these fonts (I recommend using SourceCodePro as it fits better with the default oh-my-git theme).
+
+### Github 2 factor authentication
+To make use of Github's 2 factor authentication, you need a token. Create a token and set it in the ~/.githubtoken file:
+```
+[github]
+    token = YOURTOKEN
+```
+
 # Restoring Dotfiles
 
 If you have existing dotfiles for configuring git, zsh, vim, etc, these will be backed-up into ~/.dotfiles_backup and replaced with the files from this project. You can restore your original dotfiles by using `./restore.sh`
