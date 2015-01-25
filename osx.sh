@@ -118,6 +118,7 @@ require_brew vim --override-system-vi
 require_brew watch
 # Install wget with IRI support
 require_brew wget --enable-iri
+require_brew composer
 
 ###############################################################################
 # Native Apps (via brew cask)                                                 #
