@@ -24,7 +24,7 @@ Check out how your shell prompt includes the full path & the working git branch!
 
 Note: I recommend forking this repo in case you don't like anything I do and want to set your own preferences (and pull request them!)
 ```bash
-git clone --recurse-submodules https://github.com/atomantic/dotfiles ~/.dotfiles
+git clone --recurse-submodules https://github.com/pascaldevink/dotfiles ~/.dotfiles
 cd ~/.dotfiles;
 ./install.sh;
 ```
@@ -253,4 +253,3 @@ Please refer to the [Contributor Covenant](https://github.com/atomantic/dotfiles
  * Added dotfiles backup and restore.sh script
      * you can now restore your previous dotfiles with ./restore.sh
  * prompting the user more (e.g. `brew upgrade` is now optional)
-
