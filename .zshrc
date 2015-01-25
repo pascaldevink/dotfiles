@@ -45,8 +45,5 @@ export ZSH=$HOME/.dotfiles/oh-my-zsh
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 
-## Aliases
-alias fuck='sudo $(history -p \!\!)'
-
 # Customize to your needs...
 unsetopt correct
