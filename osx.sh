@@ -139,16 +139,8 @@ brew cask install font-source-code-pro-for-powerline
 bot "installing GUI tools via homebrew casks..."
 brew tap caskroom/versions > /dev/null 2>&1
 
-# cloud storage
-require_cask dropbox
-require_cask evernote
-
-# communication
-#require_cask adium
-require_cask slack
-
-# tools
 require_cask 1password
+require_cask adium
 require_cask alfred
 require_cask appcleaner
 require_cask atom
@@ -156,6 +148,8 @@ require_cask bartender
 require_cask caffeine
 require_cask charles
 require_cask cyberduck
+require_cask dropbox
+require_cask evernote
 require_cask filezilla
 require_cask flux
 require_cask gimp
@@ -171,11 +165,13 @@ require_cask sizeup
 require_cask skype
 require_cask slack
 require_cask sourcetree
+require_cask spectacle
 require_cask spotify
 require_cask steam
 require_cask the-unarchiver
 require_cask tunnelblick
 require_cask utorrent
+require_cask viscosity
 require_cask vlc
 
 # development browsers
