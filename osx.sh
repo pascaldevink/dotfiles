@@ -99,6 +99,7 @@ require_brew gifsicle
 # skip those GUI clients, git command-line all the way
 require_brew git
 # yes, yes, use git-flow, please :)
+require_brew git-extras
 require_brew git-flow
 # why is everyone still not using GPG?
 require_brew gnupg
