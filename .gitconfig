@@ -3,7 +3,7 @@
 	email = pascal.de.vink@gmail.com
 [github]
     # https://github.com/blog/180-local-github-config
-    user = pascaldevink
+	user = pascaldevink
 
 [color]
 # ui = true is a superset of all the more specific color options
@@ -49,7 +49,6 @@
 	# prevent crlf (then you will have to deal with the problem -- dos2unix, etc)
 	#safecrlf = true
 	editor = nano
-	#editor = subl -w
 
 [alias]
 	# most commonly used
@@ -170,7 +169,7 @@
 	keepBackup = false
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
