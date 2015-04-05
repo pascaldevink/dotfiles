@@ -62,6 +62,7 @@ brew untap homebrew/dupes
 brew untap homebrew/versions
 brew tap homebrew/dupes
 brew tap homebrew/versions
+brew tap pascaldevink/pascaldevink
 
 # Install GNU core utilities (those that come with OS X are outdated)
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
@@ -101,6 +102,7 @@ require_brew git
 # yes, yes, use git-flow, please :)
 require_brew git-extras
 require_brew git-flow
+require_brew git-smb
 # why is everyone still not using GPG?
 require_brew gnupg
 # Install GNU `sed`, overwriting the built-in `sed`
