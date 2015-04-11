@@ -1,6 +1,6 @@
 # Set the default window name to empty string instead of the arbitrary "bash"
 shelltitle ''
- 
+
 # Set the window caption.
 # I use caption instead of hardstatus, so it is available per split window too
 # (hardstatus is only per complete screen).
