@@ -1,5 +1,5 @@
-# Set Sublime Text as our default command line editor (vi is the default otherwise)
-export EDITOR='subl -w'
+# Set Atom as our default command line editor (vi is the default otherwise)
+export EDITOR='atom'
 
 
 #########################################################################

@@ -60,6 +60,7 @@ bot "installing homebrew command-line tools"
 # Tap extra repositories
 brew tap homebrew/dupes > /dev/null 2>&1
 brew tap homebrew/versions > /dev/null 2>&1
+brew tap pascaldevink/pascaldevink > /dev/null 2>&1
 
 # Install GNU core utilities (those that come with OS X are outdated)
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
@@ -93,7 +94,9 @@ require_brew gifsicle
 # skip those GUI clients, git command-line all the way
 require_brew git
 # yes, yes, use git-flow, please :)
+require_brew git-extras
 require_brew git-flow
+require_brew git-smb
 # why is everyone still not using GPG?
 require_brew gnupg
 # Install GNU `sed`, overwriting the built-in `sed`
@@ -133,48 +136,47 @@ require_cask font-source-code-pro-for-powerline
 bot "installing GUI tools via homebrew casks..."
 brew tap caskroom/versions > /dev/null 2>&1
 
-# cloud storage
-#require_cask amazon-cloud-drive
-# require_cask box-sync
+require_cask 1password
+require_cask adium
+require_cask alfred
+require_cask appcleaner
+require_cask atom
+require_cask bartender
+require_cask caffeine
+require_cask charles
+require_cask cyberduck
 require_cask dropbox
 require_cask evernote
-#require_cask skydrive
-
-# communication
-#require_cask adium
-require_cask slack
-
-# tools
-#require_cask comicbooklover
-# require_cask diffmerge
-#require_cask flash-player
-# require_cask github
+require_cask filezilla
+require_cask flux
+require_cask gimp
 require_cask gpgtools
-# require_cask ireadfast
+require_cask growlnotify
 require_cask iterm2
-# require_cask lastpass-universal
-#require_cask macvim
+require_cask limechat
+require_cask macpar-deluxe
+require_cask omnigraffle
+require_cask phpstorm
+require_cask sequel-pro
 require_cask sizeup
-#require_cask simple-comic
-#require_cask sketchup
-# require_cask sublime-text
+require_cask skype
+require_cask slack
+require_cask sourcetree
+require_cask spectacle
+require_cask spotify
+require_cask steam
 require_cask the-unarchiver
-#require_cask transmission
+require_cask tunnelblick
+require_cask utorrent
+require_cask viscosity
 require_cask vlc
-# require_cask xquartz
 
 # development browsers
-# require_cask breach
 require_cask firefox
-#require_cask firefox-aurora
 require_cask google-chrome
-# require_cask google-chrome-canary
-# require_cask torbrowser
 
 # virtal machines
 require_cask virtualbox
-# chef-dk, berkshelf, etc
-# require_cask chefdk
 # vagrant for running dev environments using docker images
 require_cask vagrant # # | grep Caskroom | sed "s/.*'\(.*\)'.*/open \1\/Vagrant.pkg/g" | sh
 
@@ -548,7 +550,7 @@ running "Enable highlight hover effect for the grid view of a stack (Dock)"
 defaults write com.apple.dock mouse-over-hilite-stack -bool true;ok
 
 running "Set the icon size of Dock items to 36 pixels"
-defaults write com.apple.dock tilesize -int 36;ok
+defaults write com.apple.dock tilesize -int 50;ok
 
 running "Change minimize/maximize window effect to scale"
 defaults write com.apple.dock mineffect -string "scale";ok
