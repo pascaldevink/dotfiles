@@ -197,3 +197,4 @@
 	smudge = git media smudge %f
 [include]
 	path = ~/.githubtoken
+	path = ~/.gitconfig-local

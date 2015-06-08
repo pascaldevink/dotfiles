@@ -58,11 +58,9 @@ fi
 bot "installing homebrew command-line tools"
 
 # Tap extra repositories
-brew untap homebrew/dupes
-brew untap homebrew/versions
-brew tap homebrew/dupes
-brew tap homebrew/versions
-brew tap pascaldevink/pascaldevink
+brew tap homebrew/dupes > /dev/null 2>&1
+brew tap homebrew/versions > /dev/null 2>&1
+brew tap pascaldevink/pascaldevink > /dev/null 2>&1
 
 # Install GNU core utilities (those that come with OS X are outdated)
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
@@ -84,10 +82,6 @@ require_brew findutils
 
 # Install other useful binaries
 require_brew ack
-# Beanstalk http://kr.github.io/beanstalkd/
-#require_brew beanstalkd
-# ln -sfv /usr/local/opt/beanstalk/*.plist ~/Library/LaunchAgents
-# launchctl load ~/Library/LaunchAgents/homebrew.mxcl.beanstalk.plist
 # dos2unix converts windows newlines to unix newlines
 require_brew dos2unix
 require_brew boot2docker
@@ -133,9 +127,9 @@ require_brew wget --with-iri
 bot "installing fonts via homebrew casks..."
 brew tap caskroom/fonts > /dev/null 2>&1
 
-brew cask install font-droid-sans-mono-for-powerline
-brew cask install font-inconsolata-for-powerline
-brew cask install font-source-code-pro-for-powerline
+require_cask font-droid-sans-mono-for-powerline
+require_cask font-inconsolata-for-powerline
+require_cask font-source-code-pro-for-powerline
 
 ###############################################################################
 # Native Apps (via brew cask)                                                 #
@@ -192,10 +186,24 @@ bot "Alright, cleaning up homebrew cache..."
 brew cleanup > /dev/null 2>&1
 bot "All clean"
 
+###############################################################################
+# Antigen                                                                     #
+###############################################################################
 bot "Installing antigen..."
 mkdir -p $HOME/.antigen
-curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > $HOME/.antigen/antigen.zsh
+curl -sSL https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > $HOME/.antigen/antigen.zsh
 source $HOME/.antigen/antigen.zsh
+
+###############################################################################
+# RVM                                                                         #
+###############################################################################
+bot "Installing RVM..."
+gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
+curl -sSL https://get.rvm.io | bash -s stable --ruby
+source ~/.rvm/scripts/rvm
+rvm rvmrc warning ignore $HOME/.dotfiles/.rvmrc
+rvm requirements
+rvm install 2.2.0
 
 ###############################################################################
 bot "Configuring General System UI/UX..."
@@ -862,12 +870,14 @@ bot "NPM Globals..."
 
 require_npm bower
 require_npm grunt
+require_npm gh
+require_npm gh-gif
 
 ###############################################################################
 bot "Ruby Gems..."
 ###############################################################################
 require_gem git-up
-
+require_gem tugboat
 
 ###############################################################################
 # Kill affected applications                                                  #
