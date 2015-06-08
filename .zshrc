@@ -47,3 +47,6 @@ COMPLETION_WAITING_DOTS="true"
 
 # Customize to your needs...
 unsetopt correct
+
+# Thefuck!
+alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
