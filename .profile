@@ -17,3 +17,4 @@ source ~/.shellpaths
 source ~/.shellaliases
 # Private/Proprietary shell aliases (not to be checked into the public repo) :)
 #source ~/Dropbox/Private/Boxes/osx/.shellaliases
+source ~/Dropbox/Private/dotfiles/osx/.profile
