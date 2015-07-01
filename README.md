@@ -22,6 +22,8 @@ Check out how your shell prompt includes the full path & the working git branch!
 
 # Running
 
+Note: Install Xcode from the app store first! Some packages depend on it and the installation will fail if it's not installed. Also make sure that you have started it at least once, to accept the licenses.
+
 Note: I recommend forking this repo in case you don't like anything I do and want to set your own preferences (and pull request them!)
 ```bash
 git clone --recurse-submodules https://github.com/pascaldevink/dotfiles ~/.dotfiles
