@@ -82,6 +82,7 @@ require_brew findutils
 
 # Install other useful binaries
 require_brew ack
+require_brew ansible
 # dos2unix converts windows newlines to unix newlines
 require_brew dos2unix
 require_brew boot2docker
