@@ -2,7 +2,7 @@
 source "$HOME/.antigen/antigen.zsh"
 
 # oh-my-zsh
-antigen-use oh-my-zsh
+antigen use oh-my-zsh
 antigen bundle robbyrussell/oh-my-zsh plugins/git
 antigen bundle robbyrussell/oh-my-zsh plugins/github
 antigen bundle robbyrussell/oh-my-zsh plugins/osx
@@ -22,15 +22,16 @@ antigen bundle robbyrussell/oh-my-zsh plugins/ssh-agent
 antigen-bundle zsh-users/zsh-syntax-highlighting
 antigen-bundle zsh-users/zsh-history-substring-search
 
-antigen theme af-magic
+DEFAULT_USER=pascaldevink
+#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir symfony2_version vcs)
+#POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+#POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(time)
+#antigen theme bhilburn/powerlevel9k powerlevel9k
 
-# oh-my-git
-antigen-bundle arialdomartini/oh-my-git
-antigen theme arialdomartini/oh-my-git-themes oppa-lana-style
+antigen theme dogrocker/oh-my-zsh-powerline-cute-theme cute-theme
+BULLETTRAIN_PROMPT_CHAR="🐹 "
 
 antigen-apply
-
-omg_ungit_prompt="%~ • "
 
 ## ZSH config
 
