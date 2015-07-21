@@ -20,7 +20,7 @@ antigen bundle robbyrussell/oh-my-zsh plugins/brew
 #antigen bundle robbyrussell/oh-my-zsh plugins/ssh-agent
 
 antigen bundle zsh-users/zsh-syntax-highlighting
-#antigen bundle zsh-users/zsh-history-substring-search # slow!
+antigen bundle zsh-users/zsh-history-substring-search # slow!
 
 DEFAULT_USER=pascaldevink
 #POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir symfony2_version vcs)
@@ -51,3 +51,13 @@ unsetopt correct
 
 # Thefuck!
 alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
+
+echo "    )                                                                         ";
+echo " ( /(                       )          (                                      ";
+echo " )\())   (   (      (    ( /(    (     )\ )  (       )  (  (                  ";
+echo "((_)\   ))\  )(    ))\   )\())  ))\   (()/(  )(   ( /(  )\))(  (    (     (   ";
+echo " _((_) /((_)(()\  /((_) ((_)\  /((_)   ((_))(()\  )(_))((_))\  )\   )\ )  )\  ";
+echo "| || |(_))   ((_)(_))   | |(_)(_))     _| |  ((_)((_)_  (()(_)((_) _(_/( ((_) ";
+echo "| __ |/ -_) | '_|/ -_)  | '_ \/ -_)  / _\` | | '_|/ _\` |/ _\` |/ _ \| ' \))(_-< ";
+echo "|_||_|\___| |_|  \___|  |_.__/\___|  \__,_| |_|  \__,_|\__, |\___/|_||_| /__/ ";
+echo "                                                       |___/                  ";
