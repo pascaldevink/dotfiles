@@ -1,6 +1,6 @@
 [user]
 	name = Pascal de Vink
-	email = pascal.de.vink@gmail.com
+	email = pascal@ticketswap.com
 [github]
     # https://github.com/blog/180-local-github-config
 	user = pascaldevink
@@ -38,7 +38,7 @@
 	fontdiff = -family Monaco -size 10 -weight normal -slant roman -underline 0 -overstrike 0
 
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = /Users/pascal/.gitignore
 	quotepath = false
 	# line endings
 	# force LF during add
@@ -150,6 +150,8 @@
 	logsimple = log --graph --abbrev-commit --pretty=oneline --all --decorate
 
 	update-from = "!f() { git fetch $1 --prune; git merge --ff-only $1/$2 || git rebase $1/$2; }; f"
+
+	dmb = "!sh -c 'git checkout master && git branch --merged master | grep -v master | xargs -n 1 git branch -d'"
 [apply]
 	whitespace = nowarn
 
@@ -171,7 +173,7 @@
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /opt/homebrew-cask/Caskroom/sourcetree/2.0.5.2/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 
 [merge]
