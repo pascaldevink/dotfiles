@@ -95,3 +95,4 @@ node_modules
 .vim/backup/*
 .vim/temp/*
 .vim/.netrwhist
+web/bundles

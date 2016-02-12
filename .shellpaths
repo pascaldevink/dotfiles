@@ -8,3 +8,9 @@ export PATH=/usr/local/bin:$PATH
 
 # NPM
 export PATH=$PATH:/usr/local/share/npm/bin
+
+# packer
+export PATH=$PATH:/usr/local/packer
+
+# terraform
+export PATH=$PATH:/usr/local/terraform
