@@ -20,7 +20,7 @@ running "checking homebrew install"
 brew_bin=$(which brew) 2>&1 > /dev/null
 if [[ $? != 0 ]]; then
 	action "installing homebrew"
-    ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+    ruby -e "$(curl -fsSL /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)")"
     if [[ $? != 0 ]]; then
     	error "unable to install homebrew, script $0 abort!"
     	exit -1
@@ -85,8 +85,6 @@ require_brew ack
 require_brew ansible
 # dos2unix converts windows newlines to unix newlines
 require_brew dos2unix
-require_brew boot2docker
-require_brew fig
 # fortune command--I source this as a better motd :)
 require_brew fortune
 require_brew gawk
@@ -130,7 +128,7 @@ brew tap caskroom/fonts > /dev/null 2>&1
 
 require_cask font-droid-sans-mono-for-powerline
 require_cask font-inconsolata-for-powerline
-require_cask font-source-code-pro-for-powerline
+#require_cask font-source-code-pro-for-powerline
 
 ###############################################################################
 # Native Apps (via brew cask)                                                 #
@@ -138,29 +136,27 @@ require_cask font-source-code-pro-for-powerline
 bot "installing GUI tools via homebrew casks..."
 brew tap caskroom/versions > /dev/null 2>&1
 
-require_cask 1password
-require_cask adium
 require_cask alfred
 require_cask appcleaner
 require_cask atom
 require_cask bartender
 require_cask caffeine
 require_cask charles
+require_cask chitchat
 require_cask cyberduck
-require_cask dropbox
+require_cask dockertoolbox
 require_cask evernote
-require_cask filezilla
 require_cask flux
+require_cask gifs
 require_cask gimp
 require_cask gpgtools
 require_cask growlnotify
-require_cask iterm2
-require_cask limechat
+require_cask handbrake
+require_cask helium
+require_cask java
 require_cask macpar-deluxe
 require_cask omnigraffle
-require_cask phpstorm
 require_cask sequel-pro
-require_cask sizeup
 require_cask skype
 require_cask slack
 require_cask sourcetree
@@ -168,9 +164,7 @@ require_cask spectacle
 require_cask spotify
 require_cask steam
 require_cask the-unarchiver
-require_cask tunnelblick
 require_cask utorrent
-require_cask viscosity
 require_cask vlc
 
 # development browsers
@@ -194,6 +188,8 @@ bot "Installing antigen..."
 mkdir -p $HOME/.antigen
 curl -sSL https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > $HOME/.antigen/antigen.zsh
 source $HOME/.antigen/antigen.zsh
+
+chsh -s /bin/zsh
 
 ###############################################################################
 # RVM                                                                         #
@@ -751,8 +747,8 @@ fi;
 #defaults write com.apple.terminal FocusFollowsMouse -bool true
 #defaults write org.x.X11 wm_ffm -bool true;ok
 
-running "Installing the Solarized Dark theme for iTerm (opening file)"
-open "./configs/Solarized Dark.itermcolors";ok
+#running "Installing the Solarized Dark theme for iTerm (opening file)"
+#open "./configs/Solarized Dark.itermcolors";ok
 
 # running "Don’t display the annoying prompt when quitting iTerm"
 # defaults write com.googlecode.iterm2 PromptOnQuit -bool false;ok
