@@ -87,4 +87,9 @@ alias gitdev='git checkout develop; git-up; git branch --merged develop | grep -
 # git-smb
 #alias git=git-smb
 
+# Sprint tools
+alias sprint="jiracli --sprint WEB"
+alias whatcanido="jiracli --sprint WEB | grep \"To Do\""
+alias whatamidoing="jiracli --sprint WEB | grep -v \"Done\" | grep pascal"
+
 alias fuck='sudo $(history -p \!\!)'

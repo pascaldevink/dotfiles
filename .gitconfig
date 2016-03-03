@@ -151,7 +151,7 @@
 
 	update-from = "!f() { git fetch $1 --prune; git merge --ff-only $1/$2 || git rebase $1/$2; }; f"
 
-	dmb = "!sh -c 'git checkout master && git branch --merged master | grep -v master | xargs -n 1 git branch -d'"
+	dmb = "!sh -c 'git checkout master && git pull && git branch --merged master | grep -v master | xargs -n 1 git branch -d'"
 [apply]
 	whitespace = nowarn
 
