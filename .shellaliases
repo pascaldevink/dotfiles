@@ -85,6 +85,6 @@ alias dev2did='git co dev2did;grunt -f; git cam "new mobile build"; git push; gi
 alias gitdev='git checkout develop; git-up; git branch --merged develop | grep -v "\* develop" | xargs -n 1 git branch -d; git branch;'
 
 # git-smb
-alias git=git-smb
+#alias git=git-smb
 
 alias fuck='sudo $(history -p \!\!)'
