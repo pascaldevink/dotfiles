@@ -96,6 +96,7 @@ require_brew git
 require_brew git-extras
 require_brew git-flow
 require_brew git-smb
+require_brew gitup
 # why is everyone still not using GPG?
 require_brew gnupg
 # Install GNU `sed`, overwriting the built-in `sed`
@@ -175,6 +176,7 @@ require_cask google-chrome
 require_cask virtualbox
 # vagrant for running dev environments using docker images
 require_cask vagrant # # | grep Caskroom | sed "s/.*'\(.*\)'.*/open \1\/Vagrant.pkg/g" | sh
+vagrant plugin install vagrant-vbguest
 
 bot "Alright, cleaning up homebrew cache..."
 # Remove outdated versions from the cellar
