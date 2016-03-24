@@ -202,4 +202,4 @@
 	path = ~/.githubtoken
 	path = ~/.gitconfig-local
 [commit]
-	template = /Users/pascal/.dotfiles/.git-commit-template
+	template = ~/.dotfiles/.git-commit-template
