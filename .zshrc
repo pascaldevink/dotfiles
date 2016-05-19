@@ -62,4 +62,6 @@ echo "| __ |/ -_) | '_|/ -_)  | '_ \/ -_)  / _\` | | '_|/ _\` |/ _\` |/ _ \| ' \
 echo "|_||_|\___| |_|  \___|  |_.__/\___|  \__,_| |_|  \__,_|\__, |\___/|_||_| /__/ ";
 echo "                                                       |___/                  ";
 
+curl -s --connect-timeout 1 -A '/u/johnydoe666' 'https://www.reddit.com/r/showerthoughts/top.json?sort=top&t=week&limit=100' | python2.7 -c 'import sys, random, json; randnum = random.randint(0,99); response = json.load(sys.stdin)["data"]["children"][randnum]["data"]; print "\n\"" + response["title"] + "\""; print "    -" + response["author"] + "\n";'
+
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
