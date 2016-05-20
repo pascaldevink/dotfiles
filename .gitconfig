@@ -154,6 +154,7 @@
 
 	dmb = "!sh -c 'git checkout master && git pull && git branch --merged master | grep -v master | xargs -n 1 git branch -d'"
         logcompare = "!f() { git log --oneline --decorate master..$(git rev-parse --abbrev-ref HEAD); }; f"
+        unstage = !sh -c 'git reset $0'
 [apply]
 	whitespace = nowarn
 
