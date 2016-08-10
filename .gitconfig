@@ -1,6 +1,7 @@
 [user]
 	name = Pascal de Vink
 	email = pascal@ticketswap.com
+	signingkey = 3EA0292B
 [github]
     # https://github.com/blog/180-local-github-config
 	user = pascaldevink
@@ -166,8 +167,6 @@
 [diff]
 	#tool = myaraxis
 	tool = diffmerge
-[init]
-    templatedir = ~/.dotfiles/.git_template
 [mergetool]
 	prompt = false
 	keepBackup = false
@@ -175,7 +174,7 @@
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
-	cmd = /opt/homebrew-cask/Caskroom/sourcetree/2.0.5.2/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /opt/homebrew-cask/Caskroom/sourcetree/2.2.2/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 
 [merge]
@@ -204,3 +203,4 @@
 	path = ~/.gitconfig-local
 [commit]
 	template = ~/.dotfiles/.git-commit-template
+	gpgsign = true
