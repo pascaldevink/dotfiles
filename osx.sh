@@ -20,7 +20,7 @@ running "checking homebrew install"
 brew_bin=$(which brew) 2>&1 > /dev/null
 if [[ $? != 0 ]]; then
 	action "installing homebrew"
-    ruby -e "$(curl -fsSL /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)")"
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     if [[ $? != 0 ]]; then
     	error "unable to install homebrew, script $0 abort!"
     	exit -1
@@ -109,7 +109,7 @@ require_brew imagemagick
 require_brew imagesnap
 # jq is a JSON grep
 require_brew jq
-require_brew node
+# require_brew node
 # better/more recent version of screen
 require_brew homebrew/dupes/screen
 require_brew tig
@@ -139,27 +139,21 @@ brew tap caskroom/versions > /dev/null 2>&1
 
 require_cask alfred
 require_cask appcleaner
-require_cask atom
+#require_cask atom
 require_cask bartender
 require_cask caffeine
 require_cask charles
 require_cask chitchat
 require_cask cyberduck
-require_cask dockertoolbox
-require_cask evernote
 require_cask flux
 require_cask gifs
 require_cask gimp
 require_cask gpgtools
 require_cask growlnotify
-require_cask handbrake
 require_cask helium
 require_cask java
 require_cask macpar-deluxe
-require_cask omnigraffle
 require_cask sequel-pro
-require_cask skype
-require_cask slack
 require_cask sourcetree
 require_cask spectacle
 require_cask spotify
@@ -188,7 +182,7 @@ bot "All clean"
 ###############################################################################
 bot "Installing antigen..."
 mkdir -p $HOME/.antigen
-curl -sSL https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > $HOME/.antigen/antigen.zsh
+curl -sSL https://cdn.rawgit.com/zsh-users/antigen/v1.3.2/bin/antigen.zsh > $HOME/.antigen/antigen.zsh
 source $HOME/.antigen/antigen.zsh
 
 chsh -s /bin/zsh
@@ -202,7 +196,7 @@ curl -sSL https://get.rvm.io | bash -s stable --ruby
 source ~/.rvm/scripts/rvm
 rvm rvmrc warning ignore $HOME/.dotfiles/.rvmrc
 rvm requirements
-rvm install 2.2.0
+rvm install 2.3.0
 
 ###############################################################################
 bot "Configuring General System UI/UX..."
