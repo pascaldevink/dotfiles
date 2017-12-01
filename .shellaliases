@@ -88,8 +88,10 @@ alias gitdev='git checkout develop; git-up; git branch --merged develop | grep -
 #alias git=git-smb
 
 # Sprint tools
-alias sprint="jiracli --sprint WEB"
-alias whatcanido="jiracli --sprint WEB | grep \"To Do\""
-alias whatamidoing="jiracli --sprint WEB | grep -v \"Done\" | grep pascal"
+alias sprint="jiracli --issue-search \"project=WEBX\""
+alias whatcanido="jiracli --issue-search \"project=WEBX and status=\\\"To do\\\" and assignee is EMPTY\""
+alias whatamidoing="jiracli --issue-search \"project=WEBX and status!=\\\"Done\\\" and assignee=pascal\""
+alias whatcanireview="jiracli --issue-search \"project=WEBX and status=\\\"Ready for review\\\" and assignee!=pascal\""
 
-alias fuck='sudo $(history -p \!\!)'
+# Thefuck!
+alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'

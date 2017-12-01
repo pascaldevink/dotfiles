@@ -96,3 +96,6 @@ node_modules
 .vim/temp/*
 .vim/.netrwhist
 web/bundles
+
+graphql.config.json
+graphql.schema.json

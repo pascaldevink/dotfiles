@@ -39,6 +39,8 @@ antigen-apply
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey "^[[1;9C" forward-word
+bindkey "^[[1;9D" backward-word
 
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.dotfiles/oh-my-zsh
@@ -48,9 +50,6 @@ COMPLETION_WAITING_DOTS="true"
 
 # Customize to your needs...
 unsetopt correct
-
-# Thefuck!
-alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 
 echo "    )                                                                         ";
 echo " ( /(                       )          (                                      ";
@@ -65,3 +64,8 @@ echo "                                                       |___/              
 curl -s --connect-timeout 1 -A '/u/johnydoe666' 'https://www.reddit.com/r/showerthoughts/top.json?sort=top&t=week&limit=100' | python2.7 -c 'import sys, random, json; randnum = random.randint(0,99); response = json.load(sys.stdin)["data"]["children"][randnum]["data"]; print "\n\"" + response["title"] + "\""; print "    -" + response["author"] + "\n";'
 
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
+
+export PATH="$HOME/.fastlane/bin:$PATH"
+export PATH="$HOME/.yarn/bin:$PATH"
+export PATH="$PATH:$HOME/.composer/vendor/bin"
+export PATH="$HOME/.rvm/gems/ruby-2.4.2/bin:$PATH"
