@@ -87,7 +87,9 @@ node_modules
 ############
 # PHPStorm #
 ############
+.idea
 .idea/
+.idea/*
 
 ####################
 # Project Specific #
@@ -96,6 +98,10 @@ node_modules
 .vim/temp/*
 .vim/.netrwhist
 web/bundles
+<<<<<<< Updated upstream
 
 graphql.config.json
 graphql.schema.json
+=======
+graphql.config.json
+>>>>>>> Stashed changes

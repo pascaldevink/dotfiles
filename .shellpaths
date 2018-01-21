@@ -14,3 +14,6 @@ export PATH=$PATH:/usr/local/packer
 
 # terraform
 export PATH=$PATH:/usr/local/terraform
+
+# Composer
+export PATH=$PATH:$HOME/.composer/vendor/bin
