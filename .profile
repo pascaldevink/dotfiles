@@ -8,6 +8,9 @@ export CFLAGS="-O2 -arch x86_64"
 export LDFLAGS="-L/usr/local/lib"
 export CPPFLAGS="-I/usr/local/include"
 
+# Set the locale to something sane
+export LC_ALL=en_US.UTF-8
+
 source ~/.shellvars
 source ~/.shellfn
 source ~/.shellpaths
