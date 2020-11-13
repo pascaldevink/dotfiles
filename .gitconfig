@@ -39,7 +39,7 @@
 	fontdiff = -family Monaco -size 10 -weight normal -slant roman -underline 0 -overstrike 0
 
 [core]
-	excludesfile = /Users/pascal/.gitignore
+	excludesfile = /Users/pascaldevink/.gitignore
 	quotepath = false
 	# line endings
 	# force LF during add
@@ -50,8 +50,12 @@
 	# prevent crlf (then you will have to deal with the problem -- dos2unix, etc)
 	#safecrlf = true
 	editor = nano
+	pager = diff-so-fancy | less --tabs=4 -RFX
 
 [alias]
+	files = !git diff --name-only $(git merge-base HEAD \"$REVIEW_BASE\")
+	stat = !git diff --stat $(git merge-base HEAD \"$REVIEW_BASE\")
+
 	# most commonly used
 	co = checkout
 	d = diff --color-words
@@ -161,27 +165,23 @@
 #Enable the recording of resolved conflicts, so that identical hunks can be resolved automatically later on
 [rerere]
 	enabled = 1
-
 [difftool]
-	prompt = false
+	prompt = true
 [diff]
-	#tool = myaraxis
 	tool = diffmerge
+[difftool "diffmerge"]
+	cmd = diffmerge $LOCAL $REMOTE
+        trustExitCode = true
 [mergetool]
 	prompt = false
 	keepBackup = false
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /opt/homebrew-cask/Caskroom/sourcetree/2.2.2/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-
 [merge]
 	tool = sourcetree
 	# Always show a diffstat at the end of a merge
 	stat = true
-
+[mergetool "diffmerge"]
+	cmd = diffmerge --merge --result=$MERGED $LOCAL $BASE $REMOTE
+	trustExitCode = true
 [branch]
     # Automatically set up pull to be --rebase
     # autosetuprebase = always
@@ -204,3 +204,5 @@
 [commit]
 	template = ~/.dotfiles/.git-commit-template
 	gpgsign = true
+[diff "sopsdiffer"]
+	textconv = sops -d

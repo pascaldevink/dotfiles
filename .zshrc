@@ -8,6 +8,7 @@ antigen bundle robbyrussell/oh-my-zsh plugins/osx
 antigen bundle robbyrussell/oh-my-zsh plugins/colorize
 antigen bundle robbyrussell/oh-my-zsh plugins/docker-compose
 #antigen bundle robbyrussell/oh-my-zsh plugins/ssh-agent
+antigen bundle 'wfxr/forgit'
 
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
@@ -38,7 +39,7 @@ export SPACESHIP_PROMPT_SEPARATE_LINE=true
 export SPACESHIP_CHAR_SYMBOL="\n ➜ "
 export SPACESHIP_TIME_SHOW=true
 
-antigen-apply
+antigen apply
 
 ## ZSH config
 
@@ -69,3 +70,19 @@ export PATH="$HOME/.fastlane/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$PATH"
 export PATH="$PATH:$HOME/.composer/vendor/bin"
 export PATH="$HOME/.rvm/gems/ruby-2.4.2/bin:$PATH"
+export PATH="$PATH:$HOME/.local/bin"
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for jiractl package
+# uninstall by removing these lines or running `tabtab uninstall jiractl`
+[[ -f /usr/local/lib/node_modules/@godaddy/jiractl/node_modules/tabtab/.completions/jiractl.zsh ]] && . /usr/local/lib/node_modules/@godaddy/jiractl/node_modules/tabtab/.completions/jiractl.zsh
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/pascaldevink/.sdkman"
+[[ -s "/Users/pascaldevink/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/pascaldevink/.sdkman/bin/sdkman-init.sh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
