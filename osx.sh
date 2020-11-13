@@ -82,7 +82,7 @@ require_brew gitup
 require_brew gnupg
 # Install GNU `sed`, overwriting the built-in `sed`
 # so we can do "sed -i 's/foo/bar/' file" instead of "sed -i '' 's/foo/bar/' file"
-require_brew gnu-sed --default-names
+require_brew gnu-sed
 # better, more recent grep
 require_brew homebrew/dupes/grep
 require_brew hub
