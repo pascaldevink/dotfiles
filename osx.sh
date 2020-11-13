@@ -28,14 +28,6 @@ if [[ $? != 0 ]]; then
 fi
 ok
 
-running "checking brew-cask install"
-output=$(brew tap | grep cask)
-if [[ $? != 0 ]]; then
-	action "installing brew-cask"
-	require_brew caskroom/cask/brew-cask
-fi
-ok
-
 ###############################################################################
 #Install command-line tools using Homebrew                                    #
 ###############################################################################
@@ -70,19 +62,8 @@ require_brew moreutils
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
 require_brew findutils
 
-# Install Bash 4
-# Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before running `chsh`.
-#install bash
-#install bash-completion
-
-# Install RingoJS and Narwhal
-# Note that the order in which these are installed is important; see http://git.io/brew-narwhal-ringo.
-#install ringojs
-#install narwhal
-
 # Install other useful binaries
 require_brew ack
-require_brew ansible
 # dos2unix converts windows newlines to unix newlines
 require_brew dos2unix
 # fortune command--I source this as a better motd :)
@@ -106,71 +87,18 @@ require_brew gnu-sed --default-names
 require_brew homebrew/dupes/grep
 require_brew hub
 require_brew imagemagick
-require_brew imagesnap
 # jq is a JSON grep
 require_brew jq
-# require_brew node
+require_brew node
 # better/more recent version of screen
 require_brew homebrew/dupes/screen
 require_brew tig
 require_brew thefuck
 require_brew tree
-require_brew ttyrec
 require_brew watch
 # Install wget with IRI support
 require_brew wget --with-iri
 #require_brew composer
-
-###############################################################################
-# Fonts (via brew cask)                                                       #
-###############################################################################
-bot "installing fonts via homebrew casks..."
-brew tap caskroom/fonts > /dev/null 2>&1
-
-require_cask font-droid-sans-mono-for-powerline
-require_cask font-inconsolata-for-powerline
-#require_cask font-source-code-pro-for-powerline
-
-###############################################################################
-# Native Apps (via brew cask)                                                 #
-###############################################################################
-bot "installing GUI tools via homebrew casks..."
-brew tap caskroom/versions > /dev/null 2>&1
-
-require_cask alfred
-require_cask appcleaner
-#require_cask atom
-require_cask bartender
-require_cask caffeine
-require_cask charles
-require_cask chitchat
-require_cask cyberduck
-require_cask flux
-require_cask gifs
-require_cask gimp
-require_cask gpgtools
-require_cask growlnotify
-require_cask helium
-require_cask java
-require_cask macpar-deluxe
-require_cask sequel-pro
-require_cask sourcetree
-require_cask spectacle
-require_cask spotify
-require_cask steam
-require_cask the-unarchiver
-require_cask utorrent
-require_cask vlc
-
-# development browsers
-require_cask firefox
-require_cask google-chrome
-
-# virtal machines
-require_cask virtualbox
-# vagrant for running dev environments using docker images
-require_cask vagrant # # | grep Caskroom | sed "s/.*'\(.*\)'.*/open \1\/Vagrant.pkg/g" | sh
-vagrant plugin install vagrant-vbguest
 
 bot "Alright, cleaning up homebrew cache..."
 # Remove outdated versions from the cellar
@@ -340,8 +268,8 @@ running "Expand print panel by default"
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true;ok
 
-running "Save to disk (not to iCloud) by default"
-defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false;ok
+#running "Save to disk (not to iCloud) by default"
+#defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false;ok
 
 running "Automatically quit printer app once the print jobs complete"
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true;ok
@@ -440,8 +368,8 @@ running "Require password immediately after sleep or screen saver begins"
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0;ok
 
-running "Save screenshots to the desktop"
-defaults write com.apple.screencapture location -string "${HOME}/Desktop";ok
+#running "Save screenshots to the desktop"
+#defaults write com.apple.screencapture location -string "${HOME}/Desktop";ok
 
 running "Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)"
 defaults write com.apple.screencapture type -string "png";ok
@@ -465,10 +393,10 @@ bot "Finder Configs"
 running "Disable window animations and Get Info animations"
 defaults write com.apple.finder DisableAllAnimations -bool true;ok
 
-running "Set Desktop as the default location for new Finder windows"
+#running "Set Desktop as the default location for new Finder windows"
 # For other paths, use `PfLo` and `file:///full/path/here/`
-defaults write com.apple.finder NewWindowTarget -string "PfDe"
-defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop/";ok
+#defaults write com.apple.finder NewWindowTarget -string "PfDe"
+#defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop/";ok
 
 # running "Show hidden files by default"
 # defaults write com.apple.finder AppleShowAllFiles -bool true;ok
@@ -594,8 +522,8 @@ defaults write com.apple.dock showhidden -bool true;ok
 running "Reset Launchpad, but keep the desktop wallpaper intact"
 find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete;ok
 
-running "Add iOS Simulator to Launchpad"
-sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone Simulator.app" "/Applications/iOS Simulator.app";ok
+#running "Add iOS Simulator to Launchpad"
+#sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone Simulator.app" "/Applications/iOS Simulator.app";ok
 
 
 # bot "Configuring Hot Corners"
@@ -625,8 +553,8 @@ sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulato
 bot "Configuring Safari & WebKit"
 ###############################################################################
 
-running "Set Safari’s home page to ‘about:blank’ for faster loading"
-defaults write com.apple.Safari HomePage -string "about:blank";ok
+#running "Set Safari’s home page to ‘about:blank’ for faster loading"
+#defaults write com.apple.Safari HomePage -string "about:blank";ok
 
 running "Prevent Safari from opening ‘safe’ files automatically after downloading"
 defaults write com.apple.Safari AutoOpenSafeDownloads -bool false;ok
@@ -728,15 +656,15 @@ bot "Terminal & iTerm2"
 running "Only use UTF-8 in Terminal.app"
 defaults write com.apple.terminal StringEncodings -array 4;ok
 
-running "Use a modified version of the Solarized Dark theme by default in Terminal.app"
-TERM_PROFILE='Solarized Dark xterm-256color';
-CURRENT_PROFILE="$(defaults read com.apple.terminal 'Default Window Settings')";
-if [ "${CURRENT_PROFILE}" != "${TERM_PROFILE}" ]; then
-	open "./configs/${TERM_PROFILE}.terminal";
-	sleep 1; # Wait a bit to make sure the theme is loaded
-	defaults write com.apple.terminal 'Default Window Settings' -string "${TERM_PROFILE}";
-	defaults write com.apple.terminal 'Startup Window Settings' -string "${TERM_PROFILE}";
-fi;
+#running "Use a modified version of the Solarized Dark theme by default in Terminal.app"
+#TERM_PROFILE='Solarized Dark xterm-256color';
+#CURRENT_PROFILE="$(defaults read com.apple.terminal 'Default Window Settings')";
+#if [ "${CURRENT_PROFILE}" != "${TERM_PROFILE}" ]; then
+#	open "./configs/${TERM_PROFILE}.terminal";
+#	sleep 1; # Wait a bit to make sure the theme is loaded
+#	defaults write com.apple.terminal 'Default Window Settings' -string "${TERM_PROFILE}";
+#	defaults write com.apple.terminal 'Startup Window Settings' -string "${TERM_PROFILE}";
+#fi;
 
 #running "Enable “focus follows mouse” for Terminal.app and all X11 apps"
 # i.e. hover over a window and start typing in it without clicking first
@@ -824,8 +752,8 @@ bot "Mac App Store"
 bot "Messages"
 ###############################################################################
 
-running "Disable automatic emoji substitution (i.e. use plain text smileys)"
-defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false;ok
+#running "Disable automatic emoji substitution (i.e. use plain text smileys)"
+#defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false;ok
 
 # running "Disable smart quotes as it’s annoying for messages that contain code"
 # defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false;ok
@@ -837,8 +765,8 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 bot "Google Chrome & Google Chrome Canary"
 ###############################################################################
 
-running "Allow installing user scripts via GitHub Gist or Userscripts.org"
-defaults write com.google.Chrome ExtensionInstallSources -array "https://gist.githubusercontent.com/" "http://userscripts.org/*"
+#running "Allow installing user scripts via GitHub Gist or Userscripts.org"
+#defaults write com.google.Chrome ExtensionInstallSources -array "https://gist.githubusercontent.com/" "http://userscripts.org/*"
 # defaults write com.google.Chrome.canary ExtensionInstallSources -array "https://gist.githubusercontent.com/" "http://userscripts.org/*";ok
 
 ###############################################################################
@@ -861,16 +789,16 @@ defaults write com.google.Chrome ExtensionInstallSources -array "https://gist.gi
 bot "NPM Globals..."
 ###############################################################################
 
-require_npm bower
-require_npm grunt
-require_npm gh
-require_npm gh-gif
+#require_npm bower
+#require_npm grunt
+#require_npm gh
+#require_npm gh-gif
 
 ###############################################################################
 bot "Ruby Gems..."
 ###############################################################################
-require_gem git-up
-require_gem tugboat
+#require_gem git-up
+#require_gem tugboat
 
 ###############################################################################
 # Kill affected applications                                                  #
