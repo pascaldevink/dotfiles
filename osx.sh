@@ -84,7 +84,7 @@ require_brew gnupg
 # so we can do "sed -i 's/foo/bar/' file" instead of "sed -i '' 's/foo/bar/' file"
 require_brew gnu-sed
 # better, more recent grep
-require_brew homebrew/dupes/grep
+require_brew grep
 require_brew hub
 require_brew imagemagick
 # jq is a JSON grep
