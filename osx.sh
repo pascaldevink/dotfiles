@@ -91,7 +91,7 @@ require_brew imagemagick
 require_brew jq
 require_brew node
 # better/more recent version of screen
-require_brew homebrew/dupes/screen
+require_brew screen
 require_brew tig
 require_brew thefuck
 require_brew tree
