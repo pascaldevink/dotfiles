@@ -1,0 +1,65 @@
+# <type>: (If applied, this commit will...) <subject> (Max 50 char)
+# |<----  Using a Maximum Of 50 Characters  ---->|
+
+
+# Explain why this change is being made
+# |<----   Try To Limit Each Line to a Maximum Of 72 Characters   ---->|
+
+# Provide links or keys to any relevant tickets, articles or other resources
+# Example: Github issue #23
+
+# --- COMMIT END ---
+# Type can be
+#    🎨  :art:  Improving structure / format of the code.
+#    ⚡️  :zap:  Improving performance.
+#    🔥  :fire:  Removing code or files.
+#    🐛  :bug:  Fixing a bug.
+#    🚑  :ambulance:  Critical hotfix.
+#    ✨  :sparkles:  Introducing new features.
+#    📝  :memo:  Writing docs.
+#    🚀  :rocket:  Deploying stuff.
+#    💄  :lipstick:  Updating the UI and style files.
+#    🎉  :tada:  Initial commit.
+#    ✅  :white_check_mark:  Adding tests.
+#    🔒  :lock:  Fixing security issues.
+#    🍎  :apple:  Fixing something on macOS.
+#    🐧  :penguin:  Fixing something on Linux.
+#    🏁  :checkered_flag:  Fixing something on Windows.
+#    🔖  :bookmark:  Releasing / Version tags.
+#    🚨  :rotating_light:  Removing linter warnings.
+#    🚧  :construction:  Work in progress.
+#    💚  :green_heart:  Fixing CI Build.
+#    ⬇️  :arrow_down:  Downgrading dependencies.
+#    ⬆️  :arrow_up:  Upgrading dependencies.
+#    👷  :construction_worker:  Adding CI build system.
+#    📈  :chart_with_upwards_trend:  Adding analytics or tracking code.
+#    🔨  :hammer:  Refactoring code.
+#    ➖  :heavy_minus_sign:  Removing a dependency.
+#    🐳  :whale:  Work about Docker.
+#    ➕  :heavy_plus_sign:  Adding a dependency.
+#    🔧  :wrench:  Changing configuration files.
+#    🌐  :globe_with_meridians:  Internationalization and localization.
+#    ✏️  :pencil2:  Fixing typos.
+#    💩  :hankey:  Writing bad code that needs to be improved.
+#    ⏪  :rewind:  Reverting changes.
+#    🔀  :twisted_rightwards_arrows:  Merging branches.
+#    📦  :package:  Updating compiled files or packages.
+#    👽  :alien:  Updating code due to external API changes.
+#    🚚  :truck:  Moving or renaming files.
+#    📄  :page_facing_up:  Adding or updating license.
+#    💥  :boom:  Introducing breaking changes.
+#    🍱  :bento:  Adding or updating assets.
+#    👌  :ok_hand:  Updating code due to code review changes.
+# --------------------
+# Remember to
+#    Separate subject from body with a blank line
+#    Limit the subject line to 50 characters
+#    Capitalize the subject line
+#    Do not end the subject line with a period
+#    Use the imperative mood in the subject line
+#    Wrap the body at 72 characters
+#    Use the body to explain what and why vs. how
+#    Can use multiple lines with "-" for bullet points in body
+# --------------------
+# For more information about this template, check out
+# https://gist.github.com/adeekshith/cd4c95a064977cdc6c50

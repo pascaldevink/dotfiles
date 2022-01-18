@@ -1,0 +1,48 @@
+[user]
+	name = Pascal de Vink
+	email = pascal@pascaldevink.nl
+	signingkey = 0F1243E330FFD888
+[github]
+	user = pascaldevink
+[init]
+	defaultBranch = main
+[core]
+	excludesfile = /Users/pascaldevink/.gitignore
+	quotepath = false
+	# line endings
+	# force LF during add
+	autocrlf = input
+	# autocrlf = true # for windows to convert to CRLF on checkout and LF on add
+	# warn but allow line ending conversion to proceed
+	safecrlf = warn
+	# prevent crlf (then you will have to deal with the problem -- dos2unix, etc)
+	#safecrlf = true
+	editor = nano
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[apply]
+	whitespace = nowarn
+	tool = diffmerge
+[credential]
+    # cache creds (git help credential-cache)
+	helper = cache
+[filter "tabspace"]
+	clean = expand -t 4
+[push]
+	default = simple
+[include]
+	path = ~/.githubtoken
+[commit]
+	template = ~/.git-commit-template
+	gpgsign = true
+[alias]
+	s = status -s -u
+	c = commit
+	st = status
+	l = log --stat -C
+	ll = log --stat -C -3
+	busypeople = shortlog -6
+	busythisweek = shortlog --since=one.week.ago
+	fixup = "!sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@)\"' -"
+	squash = "!sh -c 'git commit -m \"squash! $(git log -1 --format='\\''%s'\\'' $@)\"' -"
+	dmb = "!sh -c 'git checkout master && git pull && git branch --merged master | grep -v master | xargs -n 1 git branch -d'"
+	unstage = !sh -c 'git reset $0'

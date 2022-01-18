@@ -1,0 +1,83 @@
+#!/bin/sh
+
+install_brew() {
+    # install homebrew if it's missing
+    if ! command -v brew >/dev/null 2>&1; then
+        echo "Installing homebrew"
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+
+    if [ -f "$HOME/Brewfile" ]; then
+        echo "Updating homebrew bundle"
+        brew bundle
+    fi
+}
+
+install_powerline_fonts() {
+    git clone https://github.com/powerline/fonts.git --depth=1
+    cd fonts
+    ./install.sh
+    cd ..
+    rm -rf fonts
+}
+
+configure_macos() {
+  # Disable Ctrl+Arrow mapping for Mission Control as it's more useful for jumping words in a terminal
+  defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 79 "{enabled = 0; value = { parameters = (65535, 123, 8650752); type = standard;};}"
+  defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 80 "{enabled = 0; value = { parameters = (65535, 123, 8781824); type = standard;};}"
+  defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 81 "{enabled = 0; value = { parameters = (65535, 124, 8650752); type = standard;};}"
+  defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 82 "{enabled = 0; value = { parameters = (65535, 124, 8781824); type = standard;};}"
+
+  # Check for software updates daily, not just once per week
+  defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+
+  # Trackpad: enable tap to click for this user and for the login screen
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+  defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+  defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+  # Set keyboard repeat rate to fastest
+  defaults write NSGlobalDomain KeyRepeat -int 0
+
+  # Show status bar in Finder
+  defaults write com.apple.finder ShowStatusBar -bool true
+  
+  # Remove the auto-hiding Dock delay
+  defaults write com.apple.dock autohide-delay -float 0
+
+  # Automatically hide and show the Dock"
+  defaults write com.apple.dock autohide -bool true
+
+  # Enable Safari’s debug menu"
+  defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
+
+  # Enable the Develop menu and the Web Inspector in Safari"
+  defaults write com.apple.Safari IncludeDevelopMenu -bool true
+  defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+  defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
+
+  # Add a context menu item for showing the Web Inspector in web views"
+  defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+
+  for app in  "Dock" "Finder" "Safari" "SystemUIServer"; do
+	killall "${app}" > /dev/null 2>&1
+  done
+}
+
+configure_iterm() {
+  if [ -d "$HOME/.iterm2" ]; then
+    echo "Setting iTerm preference folder"
+    defaults write com.googlecode.iterm2 PrefsCustomFolder "$HOME/.iterm2"
+  fi
+}
+
+cd "$HOME"
+
+system_type=$(uname -s)
+
+if [ "$system_type" = "Darwin" ]; then
+  install_brew
+  configure_macos
+fi
+
+install_powerline_fonts
