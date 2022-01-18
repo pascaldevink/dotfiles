@@ -1,0 +1,5 @@
+.ssh/*.key
+.ssh/id_ras
+.ssh/github_ed25519
+.ssh/amsterdamphp_rsa
+.gnupg/private-keys-v1.d/*.key
